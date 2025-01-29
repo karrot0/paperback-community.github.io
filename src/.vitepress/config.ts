@@ -2,8 +2,13 @@ import { defineConfig } from 'vitepress';
 import generateMeta from "./config/hooks/generateMeta";
 
 import headConfig from "./config/headConfig";
+<<<<<<< HEAD
 import navbarConfig from "./config/navigation/navbar";
 import sidebarConfig from "./config/navigation/sidebar";
+=======
+import navConfig from "./config/navConfig";
+import sidebarConfig from "./config/sidebarConfig";
+>>>>>>> b1a782e (Initial commit)
 
 const hostname = "https://paperback-community.github.io";
 
