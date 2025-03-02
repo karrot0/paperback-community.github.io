@@ -1,12 +1,16 @@
-# Development
-
-Coming soon!
-
 # Development <Badge type="warning" text="beta" />
 Welcome to the paperback extension development docs, here, we will teach you how to create your own Extension.
 
 ## Requirements
 
+<<<<<<< HEAD
+# Development <Badge type="warning" text="beta" />
+Welcome to the paperback extension development docs, here, we will teach you how to create your own Extension.
+
+## Requirements
+
+=======
+>>>>>>> 8005f89 (Development Page Progress)
 To get started developing extensions for Paperback you will need:
 
 - [`Node.js`](https://nodejs.org/en/) `v18.x.x` or higher
