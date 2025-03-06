@@ -56,19 +56,107 @@ Extension/
 Let's create your first source:
 
 ::: code-group
+<div class="code-container collapsed">
+
 ```typescript [main.ts]
 // Basic source implementation
-export class MangaSource implements Source {
-    readonly baseUrl = "https://yourmanga.com"
-    
+import {
+  Chapter,
+  ChapterDetails,
+  ChapterProviding,
+  CloudflareError,
+  ContentRating,
+  DiscoverSection,
+  DiscoverSectionItem,
+  DiscoverSectionProviding,
+  DiscoverSectionType,
+  MangaProviding,
+  PagedResults,
+  Request,
+  SearchResultItem,
+  SearchResultsProviding,
+  SourceManga,
+} from "@paperback/types";
+import * as cheerio from "cheerio";
+const baseUrl = "http://YourSource.com";
+
+type MangaSourceImplementation = Extension &
+  MangaProviding &
+  ChapterProviding &
+  DiscoverSectionProviding;
+
+export class MangaSource implements MangaSourceImplementation {
+    async initialise(): Promise<void> {
+    }
+
+    async getDiscoverSections(): Promise<DiscoverSection[]> {
+        return [
+        {
+            id: "popular_section",
+            title: "Popular",
+            type: DiscoverSectionType.featured,
+        },
+        {
+            id: "updated_section",
+            title: "Recently Updated",
+            type: DiscoverSectionType.simpleCarousel,
+        },
+        ];
+    }
+
+    async getDiscoverSectionItems(
+        section: DiscoverSection,
+        metadata: MangaFire.Metadata | undefined,
+    ): Promise<PagedResults<DiscoverSectionItem>> {
+        switch (section.id) {
+        case "popular_section":
+            return this.getPopularSectionItems(section, metadata);
+        case "updated_section":
+            return this.getUpdatedSectionItems(section, metadata);
+        default:
+            return { items: [] };
+        }
+    }
+
     async getMangaDetails(mangaId: string): Promise<Manga> {
         // Implementation here
     }
+
+    async getChapters()
 }
+
+export const YourSource = new MangaSource();
 ```
 
-```text [output]
-Hello
+<div class="code-toggle">Show more</div>
+</div>
+
+```typescript [pbconfig.ts]
+import { ContentRating, SourceInfo, SourceIntents } from "@paperback/types";
+
+export default {
+  name: "Your Source Name",
+  description: "A paperback extension for Your Source Name",
+  version: "1.0.0-alpha.1",
+  icon: "icon.png",
+  language: "en",
+  contentRating: ContentRating.EVERYONE,
+  badges: [
+    { label: "Content Provider", textColor: "#FFFFFF", backgroundColor: "#800080" },
+  ],
+  capabilities: [
+    SourceIntents.DISCOVER_SECIONS,
+    SourceIntents.MANGA_SEARCH,
+    SourceIntents.MANGA_CHAPTERS,
+  ],
+  developers: [
+    {
+      name: "Your Name",
+    },
+  ],
+} satisfies SourceInfo;
+
+```
 :::
 
 ::: warning
@@ -100,7 +188,8 @@ async function fetchData(id: string): Promise<Response> {
 Common data structures you'll work with:
 - `Manga`
 - `Chapter`
-- `ChapterDetails`
+- [`ChapterDetails`](/references/ChapterDetails)
+- [`Request`](/references/Request)
 - `SearchRequest`
 
 ## Next Steps

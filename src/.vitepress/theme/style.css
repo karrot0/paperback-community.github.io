@@ -137,3 +137,395 @@
   --docsearch-primary-color: var(--vp-c-brand-1) !important;
 }
 
+/**
+ * Component: Code Blocks
+ * -------------------------------------------------------------------------- */
+:root {
+  --vp-code-block-bg: var(--vp-c-bg-soft);
+  --vp-code-block-color: var(--vp-c-text-1);
+  --vp-code-line-highlight-color: rgba(125, 125, 125, 0.1);
+  --vp-code-line-number-color: var(--vp-c-text-3);
+  --vp-code-copy-code-bg: var(--vp-c-bg-soft);
+  --vp-code-copy-code-hover-bg: var(--vp-c-bg-soft);
+  --vp-code-copy-code-active-text: var(--vp-c-text-2);
+  --vp-code-tab-divider: var(--vp-c-divider);
+  --vp-code-tab-text-color: var(--vp-c-text-2);
+  --vp-code-tab-bg: var(--vp-code-block-bg);
+  --vp-code-tab-hover-text-color: var(--vp-c-text-1);
+  --vp-code-tab-active-text-color: var(--vp-c-text-1);
+  --vp-code-tab-active-bar-color: var(--vp-c-brand-1);
+}
+
+.vp-code-group {
+  margin: 16px 0;
+}
+
+.vp-code-group .tabs {
+  position: relative;
+  display: flex;
+  margin-bottom: -1px;
+  padding-top: 4px;
+  gap: 4px;
+}
+
+.vp-code-group .tab {
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  height: 32px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--vp-code-tab-text-color);
+  background-color: var(--vp-code-tab-bg);
+  border-radius: 8px 8px 0 0;
+  cursor: pointer;
+  transition: color 0.25s, background-color 0.25s;
+}
+
+.vp-code-group .tab:hover {
+  color: var(--vp-code-tab-hover-text-color);
+}
+
+.vp-code-group .tab.active {
+  color: var(--vp-code-tab-active-text-color);
+  background-color: var(--vp-code-block-bg);
+  border-bottom: 2px solid var(--vp-code-tab-active-bar-color);
+}
+
+.vp-code-group div[class*='language-'] {
+  margin: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.dark {
+  --vp-code-block-bg: #161618;
+  --vp-code-copy-code-bg: #161618;
+  --vp-code-copy-code-hover-bg: #202022;
+}
+
+.vp-doc div[class*='language-'] {
+  position: relative;
+  border-radius: 8px;
+  margin: 16px 0;
+  background-color: var(--vp-code-block-bg);
+  overflow-x: auto;
+  transition: background-color 0.5s;
+}
+
+.line-numbers-mode {
+  padding-left: 48px;
+}
+
+.line-numbers-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  text-align: center;
+  color: var(--vp-code-line-number-color);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  line-height: 1.5;
+  font-family: var(--vp-font-family-mono);
+  font-size: 14px;
+  border-right: 1px solid rgba(82, 82, 89, .32);
+}
+
+.vp-doc [class*='language-'] pre {
+  padding: 20px 24px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.vp-doc [class*='language-'] code {
+  padding: 0;
+  line-height: 1.5;
+  font-size: 14px;
+  color: var(--vp-code-block-color);
+}
+
+.vp-doc div[class*='language-'] button.copy {
+  border-radius: 4px;
+  width: 40px;
+  height: 40px;
+  background-color: var(--vp-code-copy-code-bg);
+  transition: background-color 0.25s;
+}
+
+.vp-doc div[class*='language-'] button.copy:hover {
+  background-color: var(--vp-code-copy-code-hover-bg);
+}
+
+.vp-doc div[class*='language-'] button.copy.copied::before {
+  content: 'Copied';
+  color: var(--vp-c-brand-1);
+}
+
+/**
+ * Component: Custom Containers
+ * -------------------------------------------------------------------------- */
+:root {
+  --vp-custom-block-info-border: #4e5058;
+  --vp-custom-block-info-bg: #2f3136;
+  --vp-custom-block-info-text: #dcddde;
+}
+
+.custom-block {
+  border-radius: 8px;
+  margin: 16px 0;
+  padding: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(82, 82, 89, .32);
+}
+
+.custom-block.details {
+  border-radius: 8px;
+  margin: 16px 0;
+  padding: 16px;
+}
+
+.custom-container.tip {
+  border-color: var(--vp-c-brand-1);
+  background-color: var(--vp-c-brand-soft);
+}
+
+.custom-container-title {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.custom-container.tip .custom-container-title {
+  color: var(--vp-c-brand-1);
+}
+
+.icon.outbound {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 4px;
+  color: var(--vp-c-text-2);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/**
+ * Component: Outline
+ * -------------------------------------------------------------------------- */
+:root {
+  --vp-outline-width: 240px;
+}
+
+.VPDocAsideOutline {
+  background-color: var(--vp-sidebar-bg-color);
+  border-radius: 8px;
+  padding: 12px 0;
+}
+
+.outline-title {
+  font-weight: 600;
+  font-size: 14px;
+  padding: 4px 16px;
+  margin-bottom: 4px;
+}
+
+.outline-link {
+  font-size: 13px;
+  padding: 4px 16px;
+  border-radius: 4px;
+  margin: 0 8px;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.outline-link.active {
+  color: var(--vp-c-brand-1);
+  background-color: var(--vp-c-brand-soft);
+  font-weight: 500;
+}
+
+.VPDocOutlineItem.nested {
+  margin-left: 12px;
+}
+
+/**
+ * Component: Banner Image
+ * -------------------------------------------------------------------------- */
+.vp-doc img[src*="banner"] {
+  border-radius: 12px;
+  margin: 24px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/**
+ * Component: Reference Documentation
+ * -------------------------------------------------------------------------- */
+.reference-header {
+  padding: 1.5rem;
+  margin: -24px -24px 24px -24px;
+  background-color: var(--vp-c-bg-soft);
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+.title-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.type-keyword {
+  color: var(--vp-c-brand-1);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.type-name {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0.2em 0;
+}
+
+.extends-implements {
+  font-size: 0.9em;
+  color: var(--vp-c-text-2);
+}
+
+/* Property styles */
+.property-meta {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.property-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.property-tag.required {
+  background-color: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+}
+
+.property-tag.optional {
+  background-color: var(--vp-c-gray-soft);
+  color: var(--vp-c-text-2);
+}
+
+.property-type {
+  font-family: var(--vp-font-family-mono);
+  font-size: 0.875rem;
+  color: var(--vp-c-text-code);
+  background-color: var(--vp-c-bg-soft);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+/* Section styles */
+.reference-section {
+  margin: 2rem 0;
+}
+
+.reference-section h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+.reference-section h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 1.5rem 0 0.75rem;
+}
+
+/* Related types */
+.related-types {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.related-type-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  background-color: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-1);
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.related-type-link:hover {
+  background-color: var(--vp-c-gray-soft);
+}
+
+/**
+ * Component: Collapsible Code
+ * -------------------------------------------------------------------------- */
+.code-container {
+  position: relative;
+}
+
+.code-container.collapsed {
+  .line-numbers-wrapper,
+  pre {
+    max-height: 200px;
+    overflow: hidden;
+  }
+
+  .line-numbers-wrapper {
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  }
+
+  pre {
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  }
+}
+
+.code-toggle {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+  background: var(--vp-code-block-bg);
+  border-top: 1px solid var(--vp-c-divider);
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: var(--vp-c-text-2);
+  transition: color 0.25s;
+}
+
+.code-toggle:hover {
+  color: var(--vp-c-text-1);
+}
+
+.code-container.collapsed .code-toggle {
+  background: linear-gradient(to bottom, transparent 0%, var(--vp-code-block-bg) 30%);
+  border: none;
+}
