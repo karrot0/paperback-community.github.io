@@ -199,5 +199,5 @@ Ready to dive deeper? Check out these topics:
 - [Publishing Guidelines](/development/publishing)
 
 ::: tip
-Join our [Discord server](https://discord.gg/paperback) for development help!
+Join our [Discord server](https://discord.gg/paperback-community) for development help!
 :::
