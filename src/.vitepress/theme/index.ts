@@ -12,19 +12,21 @@ export default {
     })
   },
   enhanceApp({ app, router, siteData }) {
-    router.onAfterRouteChanged = () => {
-      document.querySelectorAll('.code-toggle').forEach(toggle => {
-        toggle.addEventListener('click', () => {
-          const container = toggle.parentElement
-          if (container?.classList.contains('collapsed')) {
-            container.classList.remove('collapsed')
-            toggle.textContent = 'Show less'
-          } else {
-            container?.classList.add('collapsed')
-            toggle.textContent = 'Show more'
-          }
+    if (typeof window !== 'undefined') {
+      router.onAfterRouteChanged = () => {
+        document.querySelectorAll('.code-toggle').forEach(toggle => {
+          toggle.addEventListener('click', () => {
+            const container = toggle.parentElement
+            if (container?.classList.contains('collapsed')) {
+              container.classList.remove('collapsed')
+              toggle.textContent = 'Show less'
+            } else {
+              container?.classList.add('collapsed')
+              toggle.textContent = 'Show more'
+            }
+          })
         })
-      })
+      }
     }
   }
 } satisfies Theme
